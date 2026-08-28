@@ -7,10 +7,10 @@ function App() {
 
 
   return (
-    
     // BrowserRouter engloble toute la structure
-   <BrowserRouter basename={import.meta.env.PROD ? "/univers-manga-react-js/" : ""}>
-
+    <BrowserRouter
+      basename={import.meta.env.PROD ? "/un-monde-sans-gluten/" : ""}
+    >
       {/* Appel du composant Navbar */}
       <Navbar />
 
@@ -20,12 +20,11 @@ function App() {
       */}
       <Routes>
         {/* Route = permet de définir le chemin des liens */}
-        <Route path='/' element={<Accueil />}></Route>
+        <Route path="/" element={<Accueil />}></Route>
         {/* Route Dynamique = utiliser ":" car ils permettent de 
           "capturer" ce qui se trouve après le slash en lui donnant 
           le nom "id"
         */}
-     
       </Routes>
     </BrowserRouter>
   );

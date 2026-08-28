@@ -14,7 +14,7 @@ function Footer() {
             <div className="mb-[20px]">
               <a href="">
                 <img
-                  src="/logo/logo.jpg"
+                  src={`${import.meta.env.BASE_URL}logo.jpg`}
                   alt="logo un monde sans gluten"
                   className="h-[110px] w-[110px] object-cover"
                 />
@@ -28,7 +28,7 @@ function Footer() {
             <span className="text-gray-700 block font-semibold mb-2">
               Nos réseaux sociaux :
             </span>
-            <ul >
+            <ul>
               <li className="flex flex-col gap-4">
                 <div className="flex gap-6">
                   <a

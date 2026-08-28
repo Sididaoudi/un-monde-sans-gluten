@@ -14,7 +14,7 @@ function Navbar() {
       <div className="w-full px-8 py-6 mx-auto flex items-center justify-between">
         <a href="" className="">
           <img
-            src="/logo/logo.jpg"
+            src={`${import.meta.env.BASE_URL}logo/logo.jpg`} //permet d'afficher les images
             alt="logo un monde sans gluten"
             className="h-[110px] w-[110px] object-cover"
           />

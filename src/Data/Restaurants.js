@@ -14,7 +14,7 @@ const glutenFreeRestaurants = [
     tel: "01.46.22.68.17",
     disabledAccess: true,
     instagramUrl: "https://www.instagram.com/littlenonnaparis/",
-    img: "/src/assets/Restaurants/little-Nonna.jpg",
+    img: "Restaurants/little-Nonna.jpg",
   },
   {
     id: 2,
@@ -23,15 +23,15 @@ const glutenFreeRestaurants = [
     address: "46 Avenue de Suffren",
     city: "Paris",
     zipCode: "75015",
-    website: "https://byciro.com/index.php/fr/nos-restaurants/tasca", // URL officielle du restaurant 100% sans gluten et bio
+    website: "https://byciro.com/index.php/fr/nos-restaurants/tasca",
     minPrice: 20,
     maxPrice: 30,
     weekdayHours: ["12h - 22h30"],
-    weekendHours: ["12h - 22h30"], // Service continu 7j/7
+    weekendHours: ["12h - 22h30"],
     tel: "06.01.40.29.92.40",
     disabledAccess: true,
     instagramUrl: "https://instagram.com",
-    img: "/src/assets/Restaurants/Tasca.jpg",
+    img: "Restaurants/Tasca.jpg",
   },
   {
     id: 3,
@@ -48,7 +48,7 @@ const glutenFreeRestaurants = [
     tel: "01.42.33.24.62",
     disabledAccess: true,
     instagramUrl: "https://instagram.com",
-    img: "/src/assets/Restaurants/Judy-Rousseau.jpg",
+    img: "Restaurants/Judy-Rousseau.jpg",
   },
   {
     id: 4,
@@ -57,15 +57,15 @@ const glutenFreeRestaurants = [
     address: "88 Grande Rue de la Guillotière",
     city: "Lyon",
     zipCode: "69007",
-    website: "https://sansglutenpizza.fr/fr", // Excellente adresse artisanale hors de Paris
+    website: "https://sansglutenpizza.fr/fr",
     minPrice: 10,
     maxPrice: 20,
-    weekdayHours: ["11h30 - 15h00", "18h30 - 22h00"], // Fermé le lundi
-    weekendHours: ["11h30 - 15h00", "18h30 - 22h00"], // Fermé le dimanche
+    weekdayHours: ["11h30 - 15h00", "18h30 - 22h00"],
+    weekendHours: ["11h30 - 15h00", "18h30 - 22h00"],
     tel: "06.60.95.88.14",
-    disabledAccess: true, // Toilettes et entrées adaptées aux PMR
+    disabledAccess: true,
     instagramUrl: "https://instagram.com",
-    img: "/src/assets/Restaurants/Arepado.jpg",
+    img: "Restaurants/Arepado.jpg",
   },
   {
     id: 5,
@@ -82,7 +82,7 @@ const glutenFreeRestaurants = [
     tel: "01.46.22.68.17",
     disabledAccess: true,
     instagramUrl: "https://www.instagram.com/littlenonnaparis/",
-    img: "/src/assets/Restaurants/Le-Comptoir-de-l-Atelier.jpg",
+    img: "Restaurants/Le-Comptoir-de-l-Atelier.jpg",
   },
   {
     id: 6,
@@ -99,7 +99,7 @@ const glutenFreeRestaurants = [
     tel: "01.46.22.68.17",
     disabledAccess: true,
     instagramUrl: "https://www.instagram.com/littlenonnaparis/",
-    img: "/src/assets/Restaurants/Green-Love.jpg",
+    img: "Restaurants/Green-Love.jpg",
   },
 ];
 

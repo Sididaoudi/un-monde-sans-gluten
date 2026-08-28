@@ -11,7 +11,11 @@ function RestaurantCard({ img, name, minPrice, maxPrice, tel, address }) {
     <div className=" bg-white shadow-xl overflow-hidden rounded-sm mb-20 ">
       {/* conteneur image */}
       <div className="relative">
-        <img src={img} alt={name} className="w-full h-[260px] object-cover" />
+        <img
+          src={`${import.meta.env.BASE_URL}${img}`}
+          alt={name}
+          className="w-full h-[260px] object-cover"
+        />
 
         {/*listing__item__pic__tag */}
         <div className="text-white bg-[#f03250] font-medium p-[5px_15px_5px_10px] rounded-xs absolute top-5 left-5 inline-block text-xs">
