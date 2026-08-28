@@ -85,7 +85,7 @@ function RestaurantCard({ img, name, minPrice, maxPrice, tel, address }) {
         {/*listing__item__text__info__left */}
         <div className="flex justify-center items-center gap-2">
           <img
-            src="/src/assets/listing/list_small_icon-1.png"
+            src={`${import.meta.env.BASE_URL}listing/list_small_icon-1.png`}
             alt="icone restaurant"
           />
           <span className="font-medium text-black text-xs ">Restaurant</span>
