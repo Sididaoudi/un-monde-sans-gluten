@@ -1,6 +1,7 @@
 import { User } from "lucide-react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 
 
 function Navbar() {
@@ -33,25 +34,33 @@ function Navbar() {
             className={`md:flex absolute left-0 top-35 md:static  w-full md:w-auto transition-[max-height] overflow-hidden ease-in-out duration-300 ${isOpen ? "flex flex-col max-h-[180px]  bg-[#222222]" : "overflow-hidden max-h-0"} md:overflow-visible md:max-h-none md:transition-none`}
           >
             <ul className="flex flex-col md:flex md:flex-row  items-center  gap-6 p-3 ">
-              <li>
+              {/* <li>
                 <a href="" className="text-white font-semibold">
                   Accueil
                 </a>
-              </li>
+              </li> */}
               <li>
-                <a href="" className="text-white font-semibold">
-                  Listes
-                </a>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive
+                      ? " h-[2px] border-b-2 border-[#f03250] left-0 bottom-0 text-white font-semibold"
+                      : "text-white font-semibold"
+                  }
+                >
+                  Accueil
+                </NavLink>
               </li>
-              <li>
-                <a href="" className="text-white font-semibold">
-                  Catégories
-                </a>
+
+              <li className="text-white font-semibold">
+                <Link to="/listes">Listes</Link>
               </li>
-              <li>
-                <a href="" className="text-white font-semibold">
-                  Contact
-                </a>
+              <li className="text-white font-semibold">
+                <Link to="/categories">Catégories</Link>
+              </li>
+
+              <li className="text-white font-semibold">
+                <Link to="/contact">Contact</Link>
               </li>
             </ul>
           </nav>

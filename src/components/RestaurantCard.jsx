@@ -3,12 +3,27 @@ import { HiMiniMagnifyingGlassPlus } from "react-icons/hi2";
 
 import { CiHeart } from "react-icons/ci";
 
-import { IoStar,IoStarHalf } from "react-icons/io5";
+import { IoStar, IoStarHalf } from "react-icons/io5";
+
+import { BsFillTelephoneFill } from "react-icons/bs";
+
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 
-function RestaurantCard({ img, name, minPrice, maxPrice, tel, address }) {
+
+function RestaurantCard({
+  img,
+  name,
+  minPrice,
+  maxPrice,
+  tel,
+  address,
+  category,
+  Tags,
+  logoCategory,
+}) {
   return (
-    <div className=" bg-white shadow-xl overflow-hidden rounded-sm mb-20 ">
+    <article className=" bg-white shadow-xl overflow-hidden rounded-sm mb-20 ">
       {/* conteneur image */}
       <div className="relative">
         <img
@@ -18,8 +33,18 @@ function RestaurantCard({ img, name, minPrice, maxPrice, tel, address }) {
         />
 
         {/*listing__item__pic__tag */}
-        <div className="text-white bg-[#f03250] font-medium p-[5px_15px_5px_10px] rounded-xs absolute top-5 left-5 inline-block text-xs">
-          Populaire
+        <div
+          className={`text-white ${Tags === "Meilleur tarif" ? "bg-[#00A7EA] font-medium p-[5px_15px_5px_10px] rounded-xs absolute top-5 left-5 inline-block text-xs" : "bg-[#f03250] font-medium p-[5px_15px_5px_10px] rounded-xs absolute top-5 left-5 inline-block text-xs"}`}
+        >
+          {Tags}
+        </div>
+
+        <div className="flex gap-2 absolute left-[30px] bottom-[-30px]">
+          <img
+            src={`${import.meta.env.BASE_URL}${logoCategory}`}
+            alt="logo category"
+            className=" h-[60px] w-[60px] object-cover"
+          />
         </div>
 
         {/*class="listing__item__pic__btns */}
@@ -61,20 +86,25 @@ function RestaurantCard({ img, name, minPrice, maxPrice, tel, address }) {
               <IoStarHalf />{" "}
             </span>
           </div>
-          <h6 className="text-red-500 font-medium text-sm">
+          <h6 className="text-red-500 font-bold text-sm">
             {minPrice} - {maxPrice} €
           </h6>
         </div>
 
         {/* conteneur tel et adresse  */}
-        <ul className="flex flex-col mb-[20px]">
+        <ul className="flex flex-col mb-[20px] gap-3">
           <li className="text-xs text-black  flex items-center gap-1">
-            <span className="text-[#3232328] text-base">Tél : {tel}</span>
+            <span
+              className="text-[#3232328] text-base flex gap-3
+            "
+            >
+              <BsFillTelephoneFill className="w-4 h-4 text-[#A8A8A8]" /> {tel}
+            </span>
           </li>
 
           <li className="text-xs text-black flex items-center ">
-            <span className="text-[#3232328] text-base">
-              Adresse : {address}
+            <span className="text-[#3232328] text-base flex gap-3">
+              <FaMapMarkerAlt className="w-4 h-4 text-[#A8A8A8]" /> {address}
             </span>
           </li>
         </ul>
@@ -88,12 +118,12 @@ function RestaurantCard({ img, name, minPrice, maxPrice, tel, address }) {
             src={`${import.meta.env.BASE_URL}listing/list_small_icon-1.png`}
             alt="icone restaurant"
           />
-          <span className="font-medium text-black text-xs ">Restaurant</span>
+          <span className="font-bold text-black text-sm ">{category }</span>
         </div>
         {/*class="listing__item__text__info__right" */}
         <div className="text-xs font-bold pt-1 text-[#50D437] ">Ouvert</div>
       </div>
-    </div>
+    </article>
   );
 }
 

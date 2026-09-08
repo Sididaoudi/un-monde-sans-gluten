@@ -11,7 +11,7 @@ function PostsCards({tags, img, title,date, author}) {
         {/* blog__item__pic set-bg*/}
         <div className="w-full h-[320px] overflow-hidden">
           <img
-            src={img}
+            src={`${import.meta.env.BASE_URL}${img}`}
             alt={title}
             className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-105"
           />

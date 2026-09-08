@@ -4,7 +4,7 @@ import RestaurantCard from "./RestaurantCard";
 
 // je créer ma variable let allRestaurants qui prends comme valeur mon tableau 
 
-let allRestaurants = [...restaurants]; // je copie mon tableau manga
+let allRestaurants = [...restaurants]; // je copie mon tableau restaurants
 
 
 // je les affiche par ordre alphabétique
@@ -62,15 +62,16 @@ function Services() {
               <ul className="max-w-7xl mx-auto w-full grid md:grid-cols-3 sm:grid-cols-3 gap-6 cursor-pointer">
                 {restaurantsByAlphabeticOrber.map((restaurant) => (
                   <li key={restaurant.id}>
-                    {" "}
-                    {}
                     <RestaurantCard
                       img={restaurant.img}
                       name={restaurant.name}
+                      logoCategory={restaurant.logoCategory}
                       minPrice={restaurant.minPrice}
                       maxPrice={restaurant.maxPrice}
                       tel={restaurant.tel}
                       address={restaurant.address}
+                      Tags={restaurant.Tags}
+                      category={restaurant.category}
                     />
                   </li>
                 ))}

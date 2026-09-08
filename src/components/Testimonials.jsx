@@ -28,7 +28,7 @@ function Testimonials() {
   return (
     <section className="w-full overflow-hidden relative ">
       <img
-        src="/src/assets/testimonial/testimonial-bg.jpg"
+        src={`${import.meta.env.BASE_URL}testimonial/testimonial-bg.jpg`}
         alt="Image de fond"
         className="absolute h-full w-full object-cover"
       />

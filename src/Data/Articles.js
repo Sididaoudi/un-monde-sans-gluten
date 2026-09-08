@@ -5,7 +5,7 @@ const articles = [
     tags: ["recettes", "desserts"],
     date: "20 Août 2026",
     title: "Fondant au chocolat",
-    img: "/blog/recette-1.png",
+    img: "blog/recette-1.png",
     author: "Vincent",
   },
   {
@@ -14,7 +14,7 @@ const articles = [
     tags: ["recettes", "plats", "légumes"],
     date: "20 Août 2026",
     title: "Quinoa aux légumes",
-    img: "/blog/recette-2.jpg",
+    img: "blog/recette-2.jpg",
     author: "Marie",
   },
   {
@@ -23,7 +23,7 @@ const articles = [
     tags: ["recettes", "desserts"],
     date: "19 Août 2026",
     title: "Gâteau au chocolat",
-    img: "/blog/recette-3.jpg",
+    img: "blog/recette-3.jpg",
     author: "Hélène",
   },
 ];

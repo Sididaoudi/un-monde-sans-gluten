@@ -1,6 +1,5 @@
 // import des composants
 
-import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
 import MostPopularCategories from "../components/Most-popular-categories";
 import Services from "../components/Services";
@@ -41,7 +40,7 @@ function Accueil() {
             {/*categories__item */}
             <div className="bg-white shadow-md text-center  rounded-md pt-10 pb-4  pl-4 pr-4 flex flex-col  ">
               <img
-                src="/src/assets/work/work-1.png"
+                src={`${import.meta.env.BASE_URL}work/work-1.png`}
                 alt="Image work"
                 className="max-w-full mx-auto"
               />
@@ -55,7 +54,7 @@ function Accueil() {
             </div>
             <div className="bg-white shadow-md text-center  rounded-md pt-10 pb-4  pl-4 pr-4 flex flex-col  ">
               <img
-                src="/src/assets/work/work-2.png"
+                src={`${import.meta.env.BASE_URL}work/work-2.png`}
                 alt="Image work"
                 className="max-w-full mx-auto"
               />
@@ -70,7 +69,7 @@ function Accueil() {
 
             <div className="bg-white shadow-md text-center  rounded-md pt-10 pb-4  pl-4 pr-4 flex flex-col ">
               <img
-                src="/src/assets/work/work-3.png"
+                src={`${import.meta.env.BASE_URL}work/work-3.png`}
                 alt="Image work"
                 className="max-w-full mx-auto"
               />
@@ -104,7 +103,7 @@ function Accueil() {
               <div className="relative">
                 <a href="">
                   <img
-                    src="/src/assets/feature-location/Boulangerie.jpg"
+                    src={`${import.meta.env.BASE_URL}feature-location/Boulangerie.jpg`}
                     alt="Paris"
                     className="object-cover h-[570px] w-full rounded-sm"
                   />
@@ -122,7 +121,7 @@ function Accueil() {
               <div className="relative block  ">
                 <a href="">
                   <img
-                    src="/src/assets/feature-location/Sol-Semilla.jpg"
+                    src={`${import.meta.env.BASE_URL}feature-location/Sol-Semilla.jpg`}
                     alt="Paris"
                     className="object-cover h-[270px] w-full rounded-sm"
                   />
@@ -140,7 +139,7 @@ function Accueil() {
               <div className="relative block">
                 <a href="">
                   <img
-                    src="/src/assets/feature-location/Street-food.jpg"
+                    src={`${import.meta.env.BASE_URL}feature-location/Street-food.jpg`}
                     alt="Paris"
                     className="object-cover h-[270px] w-full rounded-sm"
                   />
@@ -158,7 +157,7 @@ function Accueil() {
               <div className="relative grid col-span-2 ">
                 <a href="">
                   <img
-                    src="/src/assets/feature-location/Pizzeria.jpg"
+                    src={`${import.meta.env.BASE_URL}feature-location/Pizzeria.jpg`}
                     alt="Paris"
                     className="object-cover h-[270px] w-full rounded-sm"
                   />
@@ -187,8 +186,7 @@ function Accueil() {
       {/* Appel du composant NewsLetter */}
       <NewsLetter />
 
-      {/* Appel du composant Footer */}
-      <Footer />
+
     </main>
   );
 }

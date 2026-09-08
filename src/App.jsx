@@ -1,7 +1,9 @@
 // import des composants
-import { BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import Accueil from './pages/Accueil';
 import Navbar from './components/Navbar';
+import Listing from './pages/Listing';
+import Footer from "./components/Footer";
 
 function App() {
 
@@ -25,7 +27,9 @@ function App() {
           "capturer" ce qui se trouve après le slash en lui donnant 
           le nom "id"
         */}
+        <Route path="/listes" element={<Listing />}></Route>
       </Routes>
+
     </BrowserRouter>
   );
 }

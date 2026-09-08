@@ -15,6 +15,9 @@ const glutenFreeRestaurants = [
     disabledAccess: true,
     instagramUrl: "https://www.instagram.com/littlenonnaparis/",
     img: "Restaurants/little-Nonna.jpg",
+    Tags: "Populaire",
+    logoCategory: "listing/list_icon-4.png",
+    category: "Restaurant",
   },
   {
     id: 2,
@@ -32,6 +35,9 @@ const glutenFreeRestaurants = [
     disabledAccess: true,
     instagramUrl: "https://instagram.com",
     img: "Restaurants/Tasca.jpg",
+    Tags: "Populaire",
+    logoCategory: "listing/list_icon-4.png",
+    category: "Restaurant",
   },
   {
     id: 3,
@@ -49,6 +55,9 @@ const glutenFreeRestaurants = [
     disabledAccess: true,
     instagramUrl: "https://instagram.com",
     img: "Restaurants/Judy-Rousseau.jpg",
+    Tags: "Populaire",
+    logoCategory: "listing/list_icon-4.png",
+    category: "Restaurant",
   },
   {
     id: 4,
@@ -66,6 +75,9 @@ const glutenFreeRestaurants = [
     disabledAccess: true,
     instagramUrl: "https://instagram.com",
     img: "Restaurants/Arepado.jpg",
+    Tags: "Meilleur tarif",
+    logoCategory: "listing/list_icon-4.png",
+    category: "Restaurant",
   },
   {
     id: 5,
@@ -83,6 +95,9 @@ const glutenFreeRestaurants = [
     disabledAccess: true,
     instagramUrl: "https://www.instagram.com/littlenonnaparis/",
     img: "Restaurants/Le-Comptoir-de-l-Atelier.jpg",
+    Tags: "Populaire",
+    logoCategory: "listing/list_icon-4.png",
+    category: "Restaurant",
   },
   {
     id: 6,
@@ -100,6 +115,9 @@ const glutenFreeRestaurants = [
     disabledAccess: true,
     instagramUrl: "https://www.instagram.com/littlenonnaparis/",
     img: "Restaurants/Green-Love.jpg",
+    Tags: "Offre spéciale",
+    logoCategory: "listing/list_icon-4.png",
+    category: "Restaurant",
   },
 ];
 
