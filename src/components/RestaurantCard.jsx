@@ -21,6 +21,8 @@ function RestaurantCard({
   category,
   Tags,
   logoCategory,
+  latitude,
+  longitude,
 }) {
   return (
     <article className=" bg-white shadow-xl overflow-hidden rounded-sm mb-20 ">
@@ -118,7 +120,7 @@ function RestaurantCard({
             src={`${import.meta.env.BASE_URL}listing/list_small_icon-1.png`}
             alt="icone restaurant"
           />
-          <span className="font-bold text-black text-sm ">{category }</span>
+          <span className="font-bold text-black text-sm ">{category}</span>
         </div>
         {/*class="listing__item__text__info__right" */}
         <div className="text-xs font-bold pt-1 text-[#50D437] ">Ouvert</div>

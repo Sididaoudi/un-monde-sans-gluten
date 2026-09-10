@@ -3,14 +3,27 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 
+// import de  useLocation qui permet de lire l'URL active
+
+import { useLocation } from "react-router-dom";
+
 
 function Navbar() {
+
+  
+
+
+  const { pathname } = useLocation();
+  console.log(pathname);
+  
 
   // création de la constante
   const [isOpen, setOpen] = useState(false); // menu au début est sur false donc pas ouvert
 
   return (
-    <header className="absolute left-0 top-0 w-full z-50">
+    <header
+      className={`${pathname === "/listes" ? "bg-[#FFFFFF] text-black shadow-md" : " bg-transparent text-white "} absolute left-0 top-0 w-full z-50 `}
+    >
       {/* Conteneur principal */}
       <div className="w-full px-8 py-6 mx-auto flex items-center justify-between">
         <a href="" className="">
@@ -44,22 +57,22 @@ function Navbar() {
                   to="/"
                   className={({ isActive }) =>
                     isActive
-                      ? " h-[2px] border-b-2 border-[#f03250] left-0 bottom-0 text-white font-semibold"
-                      : "text-white font-semibold"
+                      ? " border-b-2 border-[#f03250] left-0 bottom-0   font-semibold"
+                      : "font-semibold"
                   }
                 >
                   Accueil
                 </NavLink>
               </li>
 
-              <li className="text-white font-semibold">
+              <li className=" font-semibold">
                 <Link to="/listes">Listes</Link>
               </li>
-              <li className="text-white font-semibold">
+              <li className=" font-semibold">
                 <Link to="/categories">Catégories</Link>
               </li>
 
-              <li className="text-white font-semibold">
+              <li className=" font-semibold">
                 <Link to="/contact">Contact</Link>
               </li>
             </ul>

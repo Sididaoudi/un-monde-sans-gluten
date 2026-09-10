@@ -1,5 +1,7 @@
 import restaurants from "../Data/Restaurants";
+import bakeries from "../Data/Bakeries";
 import RestaurantCard from "../components/RestaurantCard";
+import { useState } from "react";
 
 // la map 
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
@@ -10,22 +12,37 @@ import { FaFilter } from "react-icons/fa";
 
 import { Scrollbar } from "react-scrollbars-custom";
 
-// je créer ma variable let allRestaurants qui prends comme valeur mon tableau
-
-let allRestaurants = [...restaurants]; // je copie mon tableau restaurants
-
-// je les affiche par ordre alphabétique
-let restaurantsByAlphabeticOrber = allRestaurants.sort((a, b) =>
-  a.name.localeCompare(b.name),
-);
 
 
 function Listing() {
+  // je créer ma variable let allRestaurants qui prends comme valeur mon tableau
+
+  let allRestaurants = [...restaurants]; // je copie mon tableau restaurants
+
+  // je les affiche par ordre alphabétique
+  let restaurantsByAlphabeticOrber = allRestaurants.sort((a, b) =>
+    a.name.localeCompare(b.name),
+  );
+  // compte le nombre de restaurants boulangeries etc...
+  let numberOfRestaurants = allRestaurants.length;
+
+  // affiche les catégories des différents tableaux
+   let allCategories = [...restaurants, ...bakeries];
+
+  const [selectedValue, setSelectedValue] = useState("");
+
+  // extrait uniquement les catégories
+  let listCategories = allCategories.map((option) =>
+    option.category.toLowerCase(),
+  );
+
+  let categoriesWithoutDuplicate = [...new Set(listCategories)];
+
   return (
     <section className=" mt-[160px]  h-[calc(100vh-160px)]  ">
       {/*Div container */}
-      <div className=" z-10 h-full  grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-12 gap-4 mx-auto">
-        <aside className="col-span-2 w-full p-5 h-full bg-[#FEFEFE] flex flex-col border-2 border-b-red-600 gap-4">
+      <div className=" z-10 h-full  grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-12  mx-auto">
+        <aside className="col-span-2 w-full p-5 h-full bg-[#FAFAFA] flex flex-col gap-4">
           {/*filter__title */}
           <div className="flex gap-2 align-middle">
             <FaFilter />
@@ -43,8 +60,22 @@ function Listing() {
           </div>
           {/* filter__select */}
           <div>
-            <select name="" id="">
+            {/* <select name="" id="">
               <option value="">Toutes les catégories</option>
+            </select> */}
+            <select
+              name=""
+              id=""
+              value={selectedValue}
+              onChange={(e) => setSelectedValue(e.target.value)}
+              className="border-b border-gray-200 h-14 md:border-l  cursor-pointer md:flex-1 flex focus:outline"
+            >
+              <option value="">Toutes les catégories</option>
+              {categoriesWithoutDuplicate.map((option) => (
+                <option key={option.id} value={option}>
+                  {option}
+                </option>
+              ))}
             </select>
           </div>
           {/* filter__location */}
@@ -120,14 +151,14 @@ function Listing() {
           style={{ width: "100%", height: "100%" }}
           className="col-span-7 h-full "
         >
-          <section className=" flex flex-col bg-white p-4">
+          <section className=" flex flex-col bg-[#FAFAFA] p-4">
             {/* Titre fixe qui ne bouge pas */}
             <div>
               {/*class="listing__text__top__left" */}
               <div className="flex justify-between items-center mb-3 shrink-0">
                 <h5>Restaurants</h5>
                 <span className="text-sm text-gray-500">
-                  Ici nombre de restaurants
+                  {numberOfRestaurants} Restaurants
                 </span>
               </div>
               {/* Zone scrollable uniquement pour les cartes */}
@@ -157,7 +188,7 @@ function Listing() {
         <div className="border-2  w-full h-full border-blue-300 col-span-3">
           <MapContainer
             className="h-full w-full"
-            center={[51.505, -0.09]}
+            center={[48.8795507, 2.294822]}
             zoom={13}
             scrollWheelZoom={false}
           >
@@ -165,6 +196,17 @@ function Listing() {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
+            {/* Je map pour afficher les restaurants sur la map */}
+            {restaurantsByAlphabeticOrber.map((restaurant) => (
+              <Marker
+                key={restaurant.id}
+                position={[restaurant.latitude, restaurant.longitude]}
+              >
+                <Popup>
+                  {restaurant.name}
+                </Popup>
+              </Marker>
+            ))}
             <Marker position={[51.505, -0.09]}>
               <Popup>
                 A pretty CSS3 popup. <br /> Easily customizable.
