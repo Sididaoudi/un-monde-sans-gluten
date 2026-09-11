@@ -1,5 +1,6 @@
 // import des composants
 
+import Container from "../components/Container";
 import Hero from "../components/Hero";
 import MostPopularCategories from "../components/Most-popular-categories";
 import Services from "../components/Services";
@@ -183,10 +184,9 @@ function Accueil() {
       {/* Appel du composant Posts */}
       <Posts />
 
+
       {/* Appel du composant NewsLetter */}
       <NewsLetter />
-
-
     </main>
   );
 }

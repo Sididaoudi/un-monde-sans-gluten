@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom";
 import Accueil from './pages/Accueil';
 import Navbar from './components/Navbar';
 import Listing from './pages/Listing';
+import RestaurantDetails from "./components/RestaurantDetails";
 import Footer from "./components/Footer";
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
           "capturer" ce qui se trouve après le slash en lui donnant 
           le nom "id"
         */}
+
+        <Route path="/restaurant/:id/:slug" element={<RestaurantDetails/>}></Route>
         <Route path="/listes" element={<Listing />}></Route>
       </Routes>
 

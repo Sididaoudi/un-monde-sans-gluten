@@ -68,7 +68,7 @@ const glutenFreeRestaurants = [
   {
     id: 4,
     name: "Arepado",
-    slug: "Arepado",
+    slug: "arepado",
     address: "246 Cr Lafayette",
     city: "Lyon",
     zipCode: "69007",

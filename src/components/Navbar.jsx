@@ -22,7 +22,7 @@ function Navbar() {
 
   return (
     <header
-      className={`${pathname === "/listes" ? "bg-[#FFFFFF] text-black shadow-md" : " bg-transparent text-white "} absolute left-0 top-0 w-full z-50 `}
+      className={`${pathname=== "/listes" || pathname.startsWith("/restaurant") ? "bg-[#FFFFFF] text-black shadow-md" : " bg-transparent text-white "} absolute left-0 top-0 w-full z-50 `}
     >
       {/* Conteneur principal */}
       <div className="w-full px-8 py-6 mx-auto flex items-center justify-between">

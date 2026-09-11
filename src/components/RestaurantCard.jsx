@@ -69,18 +69,14 @@ function RestaurantCard({
           <div className="flex gap-1">
             <span className="  text-[#F09D17] w-7 h-7 rounded-full   ">
               {" "}
-              <IoStar />{" "}
             </span>
             <span className="  text-[#F09D17] w-7 h-7 rounded-full  ">
-              {" "}
               <IoStar />{" "}
             </span>
             <span className="  text-[#F09D17] w-7 h-7 rounded-full   ">
-              {" "}
               <IoStar />{" "}
             </span>
             <span className="  text-[#F09D17] w-7 h-7 rounded-full  ">
-              {" "}
               <IoStar />{" "}
             </span>
 
