@@ -15,14 +15,14 @@ let restaurantsByAlphabeticOrber = allRestaurants.sort((a, b) =>
 
 function Services() {
   return (
-    <section className="w-full bg-white overflow-hidden pt-25">
+    <section className="w-full bg-[#0B0C0B] overflow-hidden pt-25">
       {/* Div container */}
       <div className="w-full z-10 relative px-3.75 flex items-center justify-center mx-auto flex-col">
         <div className="mb-10">
-          <h2 className="text-black text-4xl font-bold mb-10 text-center">
+          <h2 className="text-[#EFE7D2] text-4xl font-bold mb-10 text-center">
             Les adresses incontournables
           </h2>
-          <p className="text-black text-center">
+          <p className="text-[#EFE7D2] text-center">
             Les mieux notés par la communauté
           </p>
         </div>
@@ -32,22 +32,22 @@ function Services() {
           <ul className="flex flex-wrap pl-0 mb-0">
             <li className="mb-0 mr-10">
               <a href="">
-                <span className="mr-1">Restaurants</span>
+                <span className="mr-1 text-[#EFE7D2]">Restaurants</span>
               </a>
             </li>
             <li className="mb-0 mr-10">
               <a href="">
-                <span className="mr-1">Pizzeria</span>
+                <span className="mr-1 text-[#EFE7D2]">Pizzeria</span>
               </a>
             </li>
             <li className="mb-0 mr-10">
               <a href="">
-                <span className="mr-1">Boulangerie</span>
+                <span className="mr-1 text-[#EFE7D2]">Boulangerie</span>
               </a>
             </li>
             <li className="mb-0 mr-10">
               <a href="">
-                <span className="mr-1">Hôtels</span>
+                <span className="mr-1 text-[#EFE7D2]">Hôtels</span>
               </a>
             </li>
           </ul>

@@ -10,7 +10,6 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 
-
 function RestaurantCard({
   img,
   name,
@@ -21,8 +20,9 @@ function RestaurantCard({
   category,
   Tags,
   logoCategory,
-  latitude,
-  longitude,
+  weekdayHours,
+  weekendHours,
+  intro
 }) {
   return (
     <article className=" bg-white shadow-xl overflow-hidden rounded-sm mb-20 ">
@@ -67,9 +67,7 @@ function RestaurantCard({
         <div className="overflow-hidden mb-4 flex place-content-between">
           {/*class="listing__item__rating__star" */}
           <div className="flex gap-1">
-            <span className="  text-[#F09D17] w-7 h-7 rounded-full   ">
-              {" "}
-            </span>
+            <span className="  text-[#F09D17] w-7 h-7 rounded-full   "> </span>
             <span className="  text-[#F09D17] w-7 h-7 rounded-full  ">
               <IoStar />{" "}
             </span>
@@ -105,6 +103,13 @@ function RestaurantCard({
               <FaMapMarkerAlt className="w-4 h-4 text-[#A8A8A8]" /> {address}
             </span>
           </li>
+
+          {weekdayHours?.map((week) => (
+            <li key={week}>{weekdayHours}</li>
+          ))}
+          {weekendHours?.map((weekend) => (
+            <li key={weekend}>{weekendHours}</li>
+          ))}
         </ul>
       </div>
 

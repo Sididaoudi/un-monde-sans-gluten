@@ -5,7 +5,7 @@ import { FaTags, FaClock, FaUser } from "react-icons/fa";
 
 function PostsCards({tags, img, title,date, author}) {
   return (
-    <div className=" bg-white h-full flex flex-col ">
+    <div className=" bg-[#0B0C0B] h-full flex flex-col ">
       {/*blog item */}
       <div className="mb-8  h-full flex flex-col shadow-[0px_5px_30px_rgba(0,0,0,0.05)] border border-gray-100 rounded-sm overflow-hidden  ">
         {/* blog__item__pic set-bg*/}
@@ -29,18 +29,18 @@ function PostsCards({tags, img, title,date, author}) {
             </li>
           </ul>
           <h5 className="font-medium text-lg">
-            <a href="" className="font-bold text-xl">
+            <a href="" className="font-bold text-[#EFE7D2] text-xl">
               {title}
             </a>
           </h5>
           {/* UL blog__item__widget*/}
           <ul>
             <li className="flex gap-2">
-              <FaClock className="text-gray-400" />
+              <FaClock className="text-[#EFE7D2]" />
               <p className="text-sm text-gray-400">{date}</p>
             </li>
             <li className="flex gap-2">
-              <FaUser className="text-gray-400" />
+              <FaUser className="text-[#EFE7D2]" />
               <p className="text-sm text-gray-400">{author}</p>
             </li>
           </ul>

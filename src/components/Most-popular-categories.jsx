@@ -2,7 +2,7 @@
 
 function MostPopularCategories() {
   return (
-    <section className="pb-15 bg-[#f9f9f9] overflow-hidden pt-25">
+    <section className="pb-15 bg-[#F8F8F7] overflow-hidden pt-25">
       {/* Div container */}
       <div className="max-w-[960px] z-10 relative px-3.75 flex items-center justify-center mx-auto flex-col">
         <div className="mb-10">

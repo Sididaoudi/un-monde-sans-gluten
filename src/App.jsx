@@ -33,6 +33,7 @@ function App() {
         <Route path="/listes" element={<Listing />}></Route>
       </Routes>
 
+      <Footer />
     </BrowserRouter>
   );
 }
