@@ -2,7 +2,7 @@
 
 import Container from "../components/Container";
 import Hero from "../components/Hero";
-import MostPopularCategories from "../components/Most-popular-categories";
+import MostPopularCategories from "../components/MostPopularCategories";
 import Services from "../components/Services";
 import Testimonials from "../components/Testimonials";
 import Posts from "../components/Posts";

@@ -9,6 +9,8 @@
 
 @theme{
     --font-sans: 'Nunito', sans-serif;
+    --color-sombre: #0B0C0B;
+    --color-creme: #EFE7D2;
 }
 
 @theme inline {

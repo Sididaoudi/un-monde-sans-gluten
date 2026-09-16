@@ -1,7 +1,7 @@
 // ce composant s'occupe de dessiner  la "carte" d'un restaurant
 
 import { useParams } from "react-router-dom";
-import restaurants from "../Data/Restaurants";
+import bakeries from "../Data/Bakeries";
 
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -11,7 +11,7 @@ import { Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle } 
 import { Button } from "./ui/button";
 
 
-function RestaurantDetails() {
+function BakeriesDetails() {
   /*
         J'utilise params l'outil qui permet de lire
 
@@ -22,35 +22,37 @@ function RestaurantDetails() {
   let params = useParams();
 
   /*
-        Je créer une variable qui permet d'afficher le restaurant
+        Je créer une variable qui permet d'afficher la boulangerie
 
-        sur lequel j'ai cliqué, currentRestaurant prends comme valeur
+        sur lequel j'ai cliqué, currentBakerie prends comme valeur
 
-        mon tableau restaurants, puis j'applique find, qui permet 
+        mon tableau bakeries, puis j'applique find, qui permet 
 
-        de trouver le restaurant, en paramètre je mets le nom "restaurant"
+        de trouver la boulangerie, en paramètre je mets le nom "boulangerie"
 
-        Pour chaque restaurant je vérifie que l'ID du restaurant est égale
+        Pour chaque boulangerie je vérifie que l'ID de la boulangerie  est égale
 
         à l'ID qui se trouve dans l'URL
+        
+        par exemple dans le fichier data j'ai : id: 1 je vérifie que cet id est égal à l'id dans l'url /boulangerie/3/jo-and-nana-cakes
+
+        et je converti en nombre l'id grâce à Number
     */
 
-  let currentRestaurant = restaurants.find(
-    (restaurant) => Number(restaurant.id) === Number(params.id)
+  let currentBakerie = bakeries.find(
+    (boulangerie) => Number(boulangerie.id) === Number(params.id),
   );
 
-  // Si la restaurant n'existe pas, le code s'arrête
-  if (!currentRestaurant) {
+  // Si la boulangerie n'existe pas, le code s'arrête
+  if (!currentBakerie) {
     return (
       <main className="max-w-2xl m-auto p-5 text-center">
         <p className="text-xl font-bold text-red-400 bg-red-500">
-          Ce restaurant n'existe pas
+            Cette boulangerie n'existe pass
         </p>
       </main>
     );
   }
-
-
 
   return (
     <div className=" bg-sombre w-full min-h-screen flex flex-col p-8 ">
@@ -58,8 +60,8 @@ function RestaurantDetails() {
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
           <Card className=" col-span-5 border border-[#0B0C0C] overflow-hidden  mx-auto w-full pt-0 rounded-2xl h-full">
             <img
-              src={`${import.meta.env.BASE_URL}${currentRestaurant.img}`}
-              alt={currentRestaurant.name}
+              src={`${import.meta.env.BASE_URL}${currentBakerie.img}`}
+              alt={currentBakerie.name}
               className=" z-20  w-full object-cover "
             />
           </Card>
@@ -69,21 +71,22 @@ function RestaurantDetails() {
             <Card className="  w-full  gap-3 rounded-2xl pt-0 border  bg-sombre  p-3">
               <CardHeader>
                 <CardTitle className="text-creme font-bold  text-lg">
-                  {currentRestaurant.name}
+                  {currentBakerie.name}
                 </CardTitle>
                 <CardDescription>
                   <p className="text-creme font-bold text-base mt-2">
-                    {currentRestaurant.address} {currentRestaurant.zipCode} {currentRestaurant.city}
+                    {currentBakerie.address} {currentBakerie.zipCode}{" "}
+                    {currentBakerie.city}
                   </p>
                   <p className="text-creme font-bold text-base mt-2">
-                    {currentRestaurant.intro}
+                    {currentBakerie.intro}
                   </p>
                 </CardDescription>
               </CardHeader>
               <CardFooter>
                 <Button asChild className="text-base font-bold cursor-pointer">
                   <a
-                    href={currentRestaurant.website}
+                    href={currentBakerie.website}
                     className="font-bold text-base"
                     target="_blank"
                     rel="noreferrer"
@@ -98,10 +101,7 @@ function RestaurantDetails() {
             <Card className="min-h-[250px] bg-sombre  w-full rounded-2xl pt-0  ">
               <MapContainer
                 className="h-full w-full"
-                center={[
-                  currentRestaurant.latitude,
-                  currentRestaurant.longitude,
-                ]}
+                center={[currentBakerie.latitude, currentBakerie.longitude]}
                 zoom={13}
                 scrollWheelZoom={false}
               >
@@ -111,12 +111,9 @@ function RestaurantDetails() {
                 />
 
                 <Marker
-                  position={[
-                    currentRestaurant.latitude,
-                    currentRestaurant.longitude,
-                  ]}
+                  position={[currentBakerie.latitude, currentBakerie.longitude]}
                 >
-                  <Popup>{currentRestaurant.name}</Popup>
+                  <Popup>{currentBakerie.name}</Popup>
                 </Marker>
               </MapContainer>
             </Card>
@@ -127,24 +124,14 @@ function RestaurantDetails() {
                   Horaires :
                 </CardTitle>
                 <CardDescription className="text-creme font-bold text-base mt-2">
-                  Semaine : {currentRestaurant.weekdayHours?.join(" / ")}
+                  Semaine : {currentBakerie.weekdayHours?.join(" / ")}
                 </CardDescription>
                 <CardDescription className="text-creme font-bold text-base mt-2">
-                  Week-end : {currentRestaurant.weekendHours}
+                  Week-end : {currentBakerie.weekendHours}
                 </CardDescription>
               </CardHeader>
             </Card>
 
-            <Card className="w-full h-auto gap-3 rounded-2xl pt-0 border  bg-sombre p-3">
-              <CardHeader>
-                <CardTitle className="text-creme font-bold   text-lg">
-                  Prix :
-                </CardTitle>
-                <CardDescription className="text-creme font-bold text-base mt-2">
-                  {currentRestaurant.minPrice} - {currentRestaurant.maxPrice}€
-                </CardDescription>
-              </CardHeader>
-            </Card>
           </div>
         </div>
       </section>
@@ -152,4 +139,4 @@ function RestaurantDetails() {
   );
 };
 
-export default RestaurantDetails;
+export default BakeriesDetails;

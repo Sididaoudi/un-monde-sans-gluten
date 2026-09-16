@@ -1,4 +1,3 @@
-
 import { HiMiniMagnifyingGlassPlus } from "react-icons/hi2";
 
 import { CiHeart } from "react-icons/ci";
@@ -13,14 +12,11 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
 
-
-function RestaurantCard({
+function BakeriesCard({
   img,
-  id, 
+  id,
   slug,
   name,
-  minPrice,
-  maxPrice,
   tel,
   city,
   address,
@@ -29,9 +25,7 @@ function RestaurantCard({
   logoCategory,
   weekdayHours,
   weekendHours,
-})
-{
-  
+}) {
   return (
     <article className=" bg-white shadow-xl overflow-hidden rounded-sm mb-20 ">
       {/* conteneur image */}
@@ -98,9 +92,6 @@ function RestaurantCard({
               <IoStarHalf />{" "}
             </span>
           </div>
-          <h6 className="text-red-500 font-bold text-sm">
-            {minPrice} - {maxPrice} €
-          </h6>
         </div>
 
         {/* conteneur tel et adresse  */}
@@ -149,4 +140,4 @@ function RestaurantCard({
   );
 }
 
-export default RestaurantCard;
+export default BakeriesCard;

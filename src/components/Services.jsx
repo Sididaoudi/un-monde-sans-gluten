@@ -2,6 +2,8 @@
 import restaurants from "../Data/Restaurants";
 import RestaurantCard from "./RestaurantCard";
 
+import { Link } from "react-router-dom";
+
 // je créer ma variable let allRestaurants qui prends comme valeur mon tableau 
 
 let allRestaurants = [...restaurants]; // je copie mon tableau restaurants
@@ -63,6 +65,8 @@ function Services() {
                 {restaurantsByAlphabeticOrber.map((restaurant) => (
                   <li key={restaurant.id}>
                     <RestaurantCard
+                      id={restaurant.id}
+                      slug={restaurant.slug}
                       img={restaurant.img}
                       name={restaurant.name}
                       logoCategory={restaurant.logoCategory}
@@ -71,6 +75,9 @@ function Services() {
                       tel={restaurant.tel}
                       address={restaurant.address}
                       Tags={restaurant.Tags}
+                      city={restaurant.city}
+                      weekdayHours={restaurant.weekdayHours}
+                      weekendHours={restaurant.weekendHours}
                       category={restaurant.category}
                     />
                   </li>

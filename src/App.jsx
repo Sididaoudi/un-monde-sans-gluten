@@ -4,6 +4,7 @@ import Accueil from './pages/Accueil';
 import Navbar from './components/Navbar';
 import Listing from './pages/Listing';
 import RestaurantDetails from "./components/RestaurantDetails";
+import BakeriesDetails from "./components/BakeriesDetails";
 import Footer from "./components/Footer";
 
 function App() {
@@ -29,8 +30,21 @@ function App() {
           le nom "id"
         */}
 
-        <Route path="/restaurant/:id/:slug" element={<RestaurantDetails/>}></Route>
+        <Route
+          path="/restaurant/:id/:slug"
+          element={<RestaurantDetails />}
+        ></Route>
+        <Route path="/listes/restaurant/:city" element={<Listing />}></Route>
         <Route path="/listes" element={<Listing />}></Route>
+
+        <Route path="/listes/:category" element={<Listing />}></Route>
+
+        <Route
+          path="/boulangerie/:id/:slug"
+          element={<BakeriesDetails />}
+        ></Route>
+
+        <Route path="/listes/boulangerie/:city" element={<Listing />}></Route>
       </Routes>
 
       <Footer />

@@ -2,6 +2,8 @@ import restaurants from "../Data/Restaurants";
 import bakeries from "../Data/Bakeries";
 import RestaurantCard from "../components/RestaurantCard";
 import { useState } from "react";
+import { useParams} from "react-router-dom";
+
 
 // la map 
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
@@ -18,16 +20,56 @@ function Listing() {
   // je créer ma variable let allRestaurants qui prends comme valeur mon tableau
 
   let allRestaurants = [...restaurants]; // je copie mon tableau restaurants
+  /*
+        J'utilise params l'outil qui permet de lire
 
-  // je les affiche par ordre alphabétique
-  let restaurantsByAlphabeticOrber = allRestaurants.sort((a, b) =>
-    a.name.localeCompare(b.name),
-  );
+        l'URL actuelle et de récupérer l'ID du produit sur lequel 
+
+        je me trouve
+
+        J'ai ma variable restaurantsFilteredByCities qui 
+
+    représente mon tableau restaurants :
+
+    J'applique le filtre par ville grâce à la donnée reçue
+
+    dans params.city
+    */
+  let params = useParams();
+
+  /*
+    variable unique qui contiendra les données à afficher.
+  */
+  
+  let restaurantDisplay = [];
+
+  /*
+  Si l'utilisateur arrive sur la page globale des listes (sans ville dans l'URL), le paramètre de ville est indéfini. 
+  
+  Comparer la ville d'un restaurant à une donnée inexistante renvoie un résultat faux pour tous les éléments et vide totalement ta liste. Il 
+  
+  faut conditionner le filtre : s'il y a une ville dans l'URL, tu me filtres le tableau ; s'il n'y en a pas, tu conserves tous les restaurants.
+  */
+
+  // si pas de ville dans params.city donc dans l'url
+  if (params.city == undefined) {
+    // j'affiche tous les restaurants
+
+    // restaurantDisplay prends comme valeur tout mes restaurants
+    restaurantDisplay = allRestaurants;
+
+    // Sinon je filtre
+  } else {
+    restaurantDisplay = allRestaurants.filter(
+      (restaurant) => restaurant.city.toLocaleLowerCase() === params.city,
+    );
+  }
+
   // compte le nombre de restaurants boulangeries etc...
-  let numberOfRestaurants = allRestaurants.length;
+  let numberOfRestaurants = restaurantDisplay.length;
 
   // affiche les catégories des différents tableaux
-   let allCategories = [...restaurants, ...bakeries];
+  let allCategories = [...restaurants, ...bakeries];
 
   const [selectedValue, setSelectedValue] = useState("");
 
@@ -39,9 +81,9 @@ function Listing() {
   let categoriesWithoutDuplicate = [...new Set(listCategories)];
 
   return (
-    <section className=" mt-[160px]  h-[calc(100vh-160px)]  ">
+    <section className=" mt-[160px]  h-[calc(100vh-160px)] bg-[#0B0C0B] ">
       {/*Div container */}
-      <div className=" z-10 h-full  grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-12  mx-auto">
+      <div className=" z-10 h-full   grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-12  mx-auto">
         <aside className="col-span-2 w-full p-5 h-full bg-[#FAFAFA] flex flex-col gap-4">
           {/*filter__title */}
           <div className="flex gap-2 align-middle">
@@ -151,22 +193,26 @@ function Listing() {
           style={{ width: "100%", height: "100%" }}
           className="col-span-7 h-full "
         >
-          <section className=" flex flex-col bg-[#FAFAFA] p-4">
+          <section className=" flex flex-col bg-[#0B0C0B] p-4">
             {/* Titre fixe qui ne bouge pas */}
             <div>
               {/*class="listing__text__top__left" */}
               <div className="flex justify-between items-center mb-3 shrink-0">
-                <h5>Restaurants</h5>
-                <span className="text-sm text-gray-500">
+                <h5 className="text-[#EFE7D2] font-bold text-lg">
+                  Restaurants
+                </h5>
+                <span className="text-sm text-[#EFE7D2]">
                   {numberOfRestaurants} Restaurants
                 </span>
               </div>
               {/* Zone scrollable uniquement pour les cartes */}
               <div className="flex-1 overflow-y-auto pr-2">
                 <ul className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 cursor-pointer">
-                  {restaurantsByAlphabeticOrber.map((restaurant) => (
+                  {restaurantDisplay.map((restaurant) => (
                     <li key={restaurant.id}>
                       <RestaurantCard
+                        id={restaurant.id}
+                        slug={restaurant.slug}
                         img={restaurant.img}
                         name={restaurant.name}
                         logoCategory={restaurant.logoCategory}
@@ -176,6 +222,8 @@ function Listing() {
                         address={restaurant.address}
                         Tags={restaurant.Tags}
                         category={restaurant.category}
+                        weekdayHours={restaurant.weekdayHours}
+                        weekendHours={restaurant.weekendHours}
                       />
                     </li>
                   ))}
@@ -197,14 +245,12 @@ function Listing() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {/* Je map pour afficher les restaurants sur la map */}
-            {restaurantsByAlphabeticOrber.map((restaurant) => (
+            {restaurantDisplay.map((restaurant) => (
               <Marker
                 key={restaurant.id}
                 position={[restaurant.latitude, restaurant.longitude]}
               >
-                <Popup>
-                  {restaurant.name}
-                </Popup>
+                <Popup>{restaurant.name}</Popup>
               </Marker>
             ))}
             <Marker position={[51.505, -0.09]}>

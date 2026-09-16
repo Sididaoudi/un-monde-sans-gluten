@@ -1,10 +1,15 @@
 
 import { useState } from 'react';
 
+import { Link, useNavigate } from "react-router-dom";
+// Important : pour useNavigate bien mettre "react-router-dom"
+
+
 import heroBg from "../assets/hero/hero-bg.jpg"; // import de l'image
 
 // Etape 1 : j'importe la liste des restaurants
 import restaurants from "../Data/Restaurants";
+import bakeries from "../Data/Bakeries";
 
 
 function Hero() {
@@ -14,10 +19,52 @@ function Hero() {
   // Etape 3 : je copie mon tableau restaurants pour ne pas manipuler directement mon tableau
   let allRestaurants = [...restaurants];
 
-  // Etape 4 : je créer un nouveau UseState qui lui va afficher la liste des restaurants et qui est vide au chargement de la page
+  // je copie mon tableau pour ne pas manipuler directement mon tableau
+  let allBakeries = [...bakeries];
+
+  /*
+    Je créer un grand tableau qui prends toutes mes données
+  */
+  
+  let allProducts = [...restaurants, ...bakeries];
+  
+  // je filtre mon grand tableau pour
+
+  // Etape 4 : je créer un nouveau UseState qui lui va afficher la liste des données et qui est vide au chargement de la page
   const [listProducts, setProducts] = useState([]);
 
-  // listProducts = tous les résultats
+  const [selectedValue, setSelectedValue] = useState("");
+
+  /*
+  fonction dédiée au changement de saisie. 
+  
+  Elle doit recevoir en paramètre l'événement déclenché par le navigateur 
+
+  à chaque touche pressée.
+
+  */
+
+  // changeDisplay sert uniquement à alimenter la liste de suggestions visuelle sous l'input au fur et à mesure de la frappe.
+  function changeDisplay(e) {
+    // chercher la valeur exacte contenue dans le champ de saisie à cet instant précis
+    let word = e.target.value; // ici word contient les lettres que j'écris
+
+    // je sauvegarde le texte saisie dans mon état setSearchWord
+    setSearchWord(word);
+
+    let filtredResults = allProducts.filter((result) =>
+      result.name.toLocaleLowerCase().includes(word.toLowerCase()),
+    );
+    /* variable filteredResults qui prends le tableau allRestaurants, puis méthode filtre, pour chaque
+
+      résultat (result) tu prends la propriété "name" que tu transforme en minuscule, puis méthode includes,
+
+      qui permet de regarder si le mot saisie (word) est inclus dans le tableau allRestaurant 
+    */
+
+    // renvoie les résultats mon état setProducts donc permet de modifier l'état searchWord
+    setProducts(filtredResults);
+  }
 
   // Etape 5 : je créer la fonction qui va déclencher la recherche quand je clique sur le bouton "explorer"
 
@@ -29,10 +76,20 @@ function Hero() {
   function handleClick(e) {
     e.preventDefault(); // bloque le rechargement de page
 
-    // Etape 7 : le filtre sur allRestaurants et envoyer le résultat dans setProducts
-    let results = allRestaurants.filter((result) =>
-      result.name.toLowerCase().includes(searchWord.toLowerCase()),
+    /***
+     * 
+     * results prends mon grand tableau, filtre, pour chaque "result" prends la propriété "name" que tu transformes en
+     * 
+     * minuscules et vérifie que le nom est inclus dans ma variable searchWord que tu transformes également en minuscules
+     */
+    
+    let results = allProducts.filter((result) =>
+      result.name.toLocaleLowerCase().includes(searchWord.toLocaleLowerCase()),
     );
+
+    // let results = allRestaurants.filter((restaurant) =>
+    //   allBakeries.name.toLowerCase().includes(searchWord.toLowerCase()),
+    // );
 
     /* Ma variable results prends comme valeur mon tableau AllRestaurants qui
   
@@ -45,32 +102,35 @@ function Hero() {
     J'applique includes() qui permet de vérifier si le mot recherché est inclus dans mon tableau de restaurant, grâce à la propriété "name"
   */
 
-    // Etape 8 : J'envoie la liste filtrée dans mon état d'affichage donc setProducts
-    setProducts(results);
+    // Si l'utilisateur ne choisit aucune ville
+
+    if (selectedValue === "") {
+      navigate(`/listes`);
+    } else {
+      navigate(`/listes/${selectedValue}`);
+    }
   }
 
-  /*
-  fonction dédiée au changement de saisie. 
-  
-  Elle doit recevoir en paramètre l'événement déclenché par le navigateur 
+  let navigate = useNavigate();
 
-  à chaque touche pressée.
-
-  */
-
-  function changeDisplay(e) {
-    // chercher la valeur exacte contenue dans le champ de saisie à cet instant précis
-    let word = e.target.value; // ici word contient les lettres que j'écris
-
-    // je sauvegarde le texte dans mon état setSearchWord
-    setSearchWord(word);
-
-    let filtredResults = allRestaurants.filter((result) =>
-      result.name.toLocaleLowerCase().includes(word.toLowerCase()),
-    );
-
-    setProducts(filtredResults);
-  }
+  /***
+   *
+   * Quand je clique sur le bouton "explorer":
+   *
+   * Donc je tape un nom dans "recherche " ET/OU que je choisis une catégorie OU une ville
+   *
+   * Il faut que quand je clique sur le bouton "explorer" ça me redirige soit la page
+   *
+   * du restaurant soit vers la page "listes" avec listes/restaurants ou listes/boulangeries idem pour la ville
+   *
+   * Donc pour moi il faut :
+   *
+   * Que je débloque pourquoi je n'arrive pas à cliquer sur le restaurant que je cherche
+   *
+   * appeler sur le bouton "explorer" la fonction handleClick setProducts (qui permet de modifier les produits je crois, je sais plus)
+   *
+   *
+   */
 
   // Select des villes
   /* 
@@ -85,21 +145,11 @@ function Hero() {
 
   let allCities = [...restaurants];
 
-  const [selectedValue, setSelectedValue] = useState("");
-
   // extrait uniquement les villes du tableau restaurants et sans doublon
   let listCities = allCities.map((option) => option.city.toLowerCase());
 
   let citiesWithoutDuplicate = [...new Set(listCities)];
   // [... new Set...] permet de boucler sur un vrai tableau
-
-  // let allCategories = [...restaurants];
-
-  // const [selectedCategory, setSelectedCategory] = useState("");
-  // // extrait uniquement les catégories des tableaux restaurants, magasins, pizzeria et boulangeries  et sans doublon
-  // let listCategories = allCategories.map((option) =>
-  //   option.category.toLowerCase(),
-  // );
 
   return (
     <section
@@ -118,7 +168,11 @@ function Hero() {
         </div>
         {/* class="hero__search__form" */}
         <div className="mb-8 bg-white/10 p-3 w-full rounded-md">
-          <form action="" className="flex flex-col md:flex-row  bg-white">
+          <form
+            action=""
+            onSubmit={handleClick}
+            className="flex flex-col md:flex-row  bg-white"
+          >
             {/* champ de saisie et boîte de suggestion */}
             <div className="h-full left-0 relative z-50 bg-white shadow-xl">
               <input
@@ -127,13 +181,20 @@ function Hero() {
                 onChange={changeDisplay} // Etape 6 : chaque fois que j'écris une lettre sur l'input, onChange met à jour searchWord en temps réel et capture la lettre que j'écris
                 className="w-full text-base flex text-[#A8A8A8] pl-8 h-14 border-none focus:outline"
               />
-              {/* Liste des restaurants quand j'écris une lettre et le champ de saisie */}
+              {/* Liste des donnés quand j'écris une lettre dans le champ de saisie */}
               <div
                 className={` ${searchWord.length > 0 ? "visible w-full" : "hidden"}`}
               >
                 <ul className="left-0 p-3 w-full grid-cols-1 gap-3 cursor-pointer absolute top-full z-50 bg-white shadow-xl">
-                  {listProducts.map((restaurant) => (
-                    <li key={restaurant.id}>{restaurant.name}</li>
+                  {listProducts.map((result) => (
+                    <li key={result.id}>
+                      <Link
+                        to={`/${result.category}/${result.id}/${result.slug}`}
+                        className="flex w-full hover:text-creme"
+                      >
+                        {result.name}
+                      </Link>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -165,26 +226,26 @@ function Hero() {
               ))}
             </select>
 
-            <button className=" h-14 border-none font-bold bg-[#f03250] cursor-pointer text-white uppercase px-8">
+            <button
+              className=" h-14 border-none font-bold bg-[#f03250] cursor-pointer text-white uppercase px-8 "
+              type="submit"
+            >
               Explorer
             </button>
           </form>
 
           {/* class="hero__categories__tags"*/}
           <div className="mt-10 w-full">
-            <ul className="flex flex-wrap gap-5 justify-center">
-              <li>
-                <a
-                  href="#"
-                  className="px-4 py-2 inline-flex border border-solid  text-white gap-2 "
-                >
+            <ul className="flex flex-wrap gap-5 justify-center ">
+              <li className="px-4 py-2 inline-flex border border-solid  text-white gap-2 hover:text-creme">
+                <Link to={`/listes/`} className="flex gap-2">
                   <img
                     src={`${import.meta.env.BASE_URL}hero/cat-1.png`}
                     alt="Restaurant"
                     className="h-5"
                   />
                   Restaurants
-                </a>
+                </Link>
               </li>
 
               <li>
