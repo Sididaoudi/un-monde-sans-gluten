@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 // Important : pour useNavigate bien mettre "react-router-dom"
 
 
@@ -107,7 +107,7 @@ function Hero() {
     if (selectedValue === "") {
       navigate(`/listes`);
     } else {
-      navigate(`/listes/${selectedValue}`);
+      navigate(`/listes/?city=${selectedValue}`);
     }
   }
 
@@ -238,7 +238,10 @@ function Hero() {
           <div className="mt-10 w-full">
             <ul className="flex flex-wrap gap-5 justify-center ">
               <li className="px-4 py-2 inline-flex border border-solid  text-white gap-2 hover:text-creme">
-                <Link to={`/listes/`} className="flex gap-2">
+                <Link
+                  to={"/listes/?category=Restaurants"}
+                  className="flex gap-2"
+                >
                   <img
                     src={`${import.meta.env.BASE_URL}hero/cat-1.png`}
                     alt="Restaurant"
@@ -248,57 +251,49 @@ function Hero() {
                 </Link>
               </li>
 
-              <li>
-                <a
-                  href="#"
-                  className="px-4 py-2 inline-flex border border-solid  text-white gap-2 "
+              <li className="px-4 py-2 inline-flex border border-solid  text-white gap-2 hover:text-creme">
+                <Link
+                  to={"/listes/?category=Boulangeries"}
+                  className="flex gap-2"
                 >
                   <img
                     src={`${import.meta.env.BASE_URL}hero/boutique.png`}
-                    alt="Boulangerie"
+                    alt="Boulangeries"
                     className="h-5"
                   />
                   Boulangeries
-                </a>
+                </Link>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="px-4 py-2 inline-flex border border-solid  text-white gap-2 "
-                >
+
+              <li className="px-4 py-2 inline-flex border border-solid  text-white gap-2 hover:text-creme">
+                <Link to={`/listes/magasins`} className="flex gap-2">
                   <img
                     src={`${import.meta.env.BASE_URL}hero/cat-4.png`}
-                    alt="Magasins"
+                    alt="Restaurant"
                     className="h-5"
                   />
                   Magasins
-                </a>
+                </Link>
               </li>
-              <li className="">
-                <a
-                  href="#"
-                  className="px-4 py-2 inline-flex border border-solid  text-white gap-2 "
-                >
+              <li className="px-4 py-2 inline-flex border border-solid  text-white gap-2 hover:text-creme">
+                <Link to={`/listes/pizzerias`} className="flex gap-2">
                   <img
                     src={`${import.meta.env.BASE_URL}hero/pizza.png`}
-                    alt="Pizzeria"
+                    alt="Restaurant"
                     className="h-5"
                   />
-                  Pizzeria
-                </a>
+                  Pizzerias
+                </Link>
               </li>
-              <li>
-                <a
-                  href="#"
-                  className="px-4 py-2 inline-flex border border-solid  text-white gap-2 "
-                >
+              <li className="px-4 py-2 inline-flex border border-solid  text-white gap-2 hover:text-creme">
+                <Link to={`/listes`} className="flex gap-2">
                   <img
                     src={`${import.meta.env.BASE_URL}hero/cat-6.png`}
-                    alt="toutes les catégorie"
+                    alt="Restaurant"
                     className="h-5"
                   />
                   Toutes les catégories
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

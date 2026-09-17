@@ -1,9 +1,8 @@
 import restaurants from "../Data/Restaurants";
 import bakeries from "../Data/Bakeries";
-import RestaurantCard from "../components/RestaurantCard";
+import ProductCard from "../components/ProductCard";
 import { useState } from "react";
-import { useParams} from "react-router-dom";
-
+import { useSearchParams } from "react-router-dom";
 
 // la map 
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
@@ -17,9 +16,23 @@ import { Scrollbar } from "react-scrollbars-custom";
 
 
 function Listing() {
+  /**
+   * Etape 1 : dans Hero je clique sur un des liens "restaurants" "boulangeries" etc...
+   *
+   * Etape 2 : je créer un grand tableau qui prends toutes mes données
+   *
+   * Etape 3 :
+   *
+   */
   // je créer ma variable let allRestaurants qui prends comme valeur mon tableau
 
   let allRestaurants = [...restaurants]; // je copie mon tableau restaurants
+
+  // je copie mon tableau pour ne pas manipuler directement les données du vrai tableau
+  let allBakeries = [...bakeries];
+
+  let allProducts = [...restaurants, ...bakeries];
+
   /*
         J'utilise params l'outil qui permet de lire
 
@@ -35,13 +48,12 @@ function Listing() {
 
     dans params.city
     */
-  let params = useParams();
 
   /*
-    variable unique qui contiendra les données à afficher.
+    variable unique qui contiendra les données à afficher, boulangeries ou restaurants ou peu importe
   */
-  
-  let restaurantDisplay = [];
+
+ const [searchParams, setSearchParams] = useSearchParams();
 
   /*
   Si l'utilisateur arrive sur la page globale des listes (sans ville dans l'URL), le paramètre de ville est indéfini. 
@@ -51,22 +63,55 @@ function Listing() {
   faut conditionner le filtre : s'il y a une ville dans l'URL, tu me filtres le tableau ; s'il n'y en a pas, tu conserves tous les restaurants.
   */
 
-  // si pas de ville dans params.city donc dans l'url
-  if (params.city == undefined) {
-    // j'affiche tous les restaurants
 
-    // restaurantDisplay prends comme valeur tout mes restaurants
-    restaurantDisplay = allRestaurants;
 
-    // Sinon je filtre
-  } else {
-    restaurantDisplay = allRestaurants.filter(
-      (restaurant) => restaurant.city.toLocaleLowerCase() === params.city,
+  /*
+    Si le paramètre de catégorie existe dans l'URL, tu ne 
+    
+    gardes dans ton tableau que les établissements de 
+    
+    cette catégorie.
+
+
+
+  */
+  
+  let productsDisplay = allProducts;
+  
+  let paramsCity = searchParams.get("city");
+  let paramsCategory = searchParams.get("category");
+  // si la categorie existe
+  if (paramsCategory) {
+    productsDisplay = allProducts.filter(
+      (product) =>
+        product.category.toLowerCase() === paramsCategory.toLocaleLowerCase(),
     );
-  }
+  } 
+
+  if (paramsCity) {
+    productsDisplay = productsDisplay.filter(
+      (product) =>
+        product.city.toLowerCase() === paramsCity.toLocaleLowerCase(),
+    );
+  } 
+
+  /*
+  
+    // Sinon je filtre
+
+  } else {
+
+    productsDisplay = allProducts.filter(
+
+      (product) => product.category.toLocaleLowerCase() === params.category,
+
+    );
+
+  
+  */
 
   // compte le nombre de restaurants boulangeries etc...
-  let numberOfRestaurants = restaurantDisplay.length;
+  let numberOfProducts = productsDisplay.length;
 
   // affiche les catégories des différents tableaux
   let allCategories = [...restaurants, ...bakeries];
@@ -198,32 +243,30 @@ function Listing() {
             <div>
               {/*class="listing__text__top__left" */}
               <div className="flex justify-between items-center mb-3 shrink-0">
-                <h5 className="text-[#EFE7D2] font-bold text-lg">
-                  Restaurants
-                </h5>
+                <h5 className="text-[#EFE7D2] font-bold text-lg">Produits</h5>
                 <span className="text-sm text-[#EFE7D2]">
-                  {numberOfRestaurants} Restaurants
+                  {numberOfProducts} Restaurants
                 </span>
               </div>
               {/* Zone scrollable uniquement pour les cartes */}
               <div className="flex-1 overflow-y-auto pr-2">
                 <ul className="w-full grid grid-cols-1 lg:grid-cols-2 gap-6 cursor-pointer">
-                  {restaurantDisplay.map((restaurant) => (
-                    <li key={restaurant.id}>
-                      <RestaurantCard
-                        id={restaurant.id}
-                        slug={restaurant.slug}
-                        img={restaurant.img}
-                        name={restaurant.name}
-                        logoCategory={restaurant.logoCategory}
-                        minPrice={restaurant.minPrice}
-                        maxPrice={restaurant.maxPrice}
-                        tel={restaurant.tel}
-                        address={restaurant.address}
-                        Tags={restaurant.Tags}
-                        category={restaurant.category}
-                        weekdayHours={restaurant.weekdayHours}
-                        weekendHours={restaurant.weekendHours}
+                  {productsDisplay.map((product) => (
+                    <li key={product.slug}>
+                      <ProductCard
+                        id={product.id}
+                        slug={product.slug}
+                        img={product.img}
+                        name={product.name}
+                        logoCategory={product.logoCategory}
+                        minPrice={product.minPrice}
+                        maxPrice={product.maxPrice}
+                        tel={product.tel}
+                        address={product.address}
+                        Tags={product.Tags}
+                        category={product.category}
+                        weekdayHours={product.weekdayHours}
+                        weekendHours={product.weekendHours}
                       />
                     </li>
                   ))}
@@ -245,7 +288,7 @@ function Listing() {
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {/* Je map pour afficher les restaurants sur la map */}
-            {restaurantDisplay.map((restaurant) => (
+            {productsDisplay.map((restaurant) => (
               <Marker
                 key={restaurant.id}
                 position={[restaurant.latitude, restaurant.longitude]}

@@ -4,6 +4,7 @@ import Accueil from './pages/Accueil';
 import Navbar from './components/Navbar';
 import Listing from './pages/Listing';
 import RestaurantDetails from "./components/RestaurantDetails";
+import ProductDetails from "./components/ProductDetails";
 import BakeriesDetails from "./components/BakeriesDetails";
 import Footer from "./components/Footer";
 
@@ -31,19 +32,26 @@ function App() {
         */}
 
         <Route
-          path="/restaurant/:id/:slug"
-          element={<RestaurantDetails />}
+          path="/:category/:id/:slug"
+          element={<ProductDetails />}
         ></Route>
         <Route path="/listes/restaurant/:city" element={<Listing />}></Route>
-        <Route path="/listes" element={<Listing />}></Route>
+        {/* <Route path="/listes" element={<Listing />}></Route> */}
 
         <Route path="/listes/:category" element={<Listing />}></Route>
+
+        {/* <Route path="/:category/:city" element={<Listing />}></Route> */}
+
+        <Route path="/listes/" element={<Listing />}></Route>
+
+        {/* <Route path="/listes/restaurants" element={<Listing />}></Route>
+
+        <Route path="/listes/boulangeries" element={<Listing />}></Route> */}
 
         <Route
           path="/boulangerie/:id/:slug"
           element={<BakeriesDetails />}
         ></Route>
-
         <Route path="/listes/boulangerie/:city" element={<Listing />}></Route>
       </Routes>
 
