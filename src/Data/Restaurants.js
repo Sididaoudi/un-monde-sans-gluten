@@ -132,6 +132,28 @@ const glutenFreeRestaurants = [
     latitude: 43.294929124869704,
     longitude: 5.38324214417762,
   },
+  {
+    id: 7,
+    name: "Sol Semilla",
+    slug: "sol-semilla",
+    address: "23 Rue des Vinaigriers",
+    city: "Paris",
+    zipCode: "75010",
+    website: "https://restaurant.sol-semilla.fr/",
+    minPrice: 20,
+    maxPrice: 30,
+    weekdayHours: ["10h30 - 22h"],
+    weekendHours: ["10h30 - 17h"],
+    tel: "01.42.01.03.44",
+    disabledAccess: true,
+    instagramUrl: "https://www.instagram.com/solsemillasuperaliments/?hl=fr",
+    img: "Restaurants/Sol-Semilla.jpg",
+    Tags: "Populaire",
+    logoCategory: "listing/list_icon-4.png",
+    category: "Restaurants",
+    latitude: 48.87321869151646,
+    longitude: 2.3630838404802788,
+  },
 ];
 
 export default glutenFreeRestaurants;

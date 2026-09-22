@@ -33,7 +33,7 @@ function RestaurantCard({
 {
   
   return (
-    <article className=" bg-white shadow-xl overflow-hidden rounded-sm mb-20 ">
+    <article className=" w-full flex flex-col h-full bg-white shadow-xl overflow-hidden rounded-sm ">
       {/* conteneur image */}
 
       <div className="relative">
@@ -77,7 +77,7 @@ function RestaurantCard({
       </div>
 
       {/*container */}
-      <div className="flex flex-col pl-[30px] pr-[30px] pt-[30px]">
+      <div className="flex w-full  flex-col pl-[30px] pr-[30px] pt-[30px] ">
         <h5 className="text-black font-medium text-xl mb-[6px]">{name}</h5>
         {/* class="listing__item__text__rating"*/}
         <div className="overflow-hidden mb-4 flex place-content-between">
@@ -104,7 +104,7 @@ function RestaurantCard({
         </div>
 
         {/* conteneur tel et adresse  */}
-        <ul className="flex flex-col mb-[20px] gap-3">
+        <ul className="flex flex-col  gap-3 max-h-[200px] ">
           <li className="text-xs text-black  flex items-center gap-1">
             <span
               className="text-[#3232328] text-base flex gap-3
@@ -114,7 +114,7 @@ function RestaurantCard({
             </span>
           </li>
 
-          <li className="text-xs text-black flex items-center ">
+          <li className="text-xs text-black flex items-center w-full ">
             <span className="text-[#3232328] text-base flex gap-3">
               <FaMapMarkerAlt className="w-4 h-4 text-[#A8A8A8]" /> {address} -{" "}
               {city}

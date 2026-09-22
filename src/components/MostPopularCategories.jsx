@@ -2,9 +2,9 @@
 
 function MostPopularCategories() {
   return (
-    <section className="pb-15 bg-[#F8F8F7] overflow-hidden pt-25">
+    <section className=" bg-[#F8F8F7] overflow-hidden py-32 ">
       {/* Div container */}
-      <div className="max-w-[960px] z-10 relative px-3.75 flex items-center justify-center mx-auto flex-col">
+      <div className="max-w-[960px] z-10 relative flex items-center justify-center mx-auto flex-col">
         <div className="mb-10">
           <h2 className="text-black text-4xl font-bold mb-10 text-center">
             Les catégories les plus populaires
