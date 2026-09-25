@@ -60,7 +60,7 @@ function ProductDetails() {
   }
 
   return (
-    <div className=" bg-sombre w-full min-h-screen flex flex-col p-8 ">
+    <div className=" bg-sombre w-full min-h-screen flex flex-col p-8 py-32">
       <section className="max-w-7xl mt-5 mx-auto  px-4  pt-40">
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
           <Card className=" col-span-5 border border-[#0B0C0C] overflow-hidden  mx-auto w-full pt-0 rounded-2xl h-full">
@@ -96,7 +96,7 @@ function ProductDetails() {
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Site
+                    Découvrir
                   </a>
                 </Button>
               </CardFooter>
@@ -132,7 +132,7 @@ function ProductDetails() {
                   Semaine : {currentProduct.weekdayHours?.join(" / ")}
                 </CardDescription>
                 <CardDescription className="text-creme font-bold text-base mt-2">
-                  Week-end : {currentProduct.weekendHours}
+                  Week-end : {currentProduct.weekendHours.join(" / ")}
                 </CardDescription>
               </CardHeader>
             </Card>

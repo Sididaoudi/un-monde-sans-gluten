@@ -1,7 +1,7 @@
 import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { RiTwitterXFill } from "react-icons/ri";
-
+import { NavLink, Link } from "react-router-dom";
 
 
 function Footer() {
@@ -59,36 +59,36 @@ function Footer() {
             </span>
             <ul className="flex flex-col gap-3">
               <li>
-                <a
-                  href=""
+                <Link
                   className="text-gray-400 font-semibold hover:text-red-600 duration-300 ease-in-out"
+                  to="/"
                 >
                   Accueil
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href=""
+                <Link
                   className="text-gray-400 font-semibold hover:text-red-600 duration-300 ease-in-out"
+                  to="/listes"
                 >
                   Listes
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href=""
+                <Link
                   className="text-gray-400 font-semibold hover:text-red-600 duration-300 ease-in-out"
+                  to="/categories"
                 >
                   Catégories
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href=""
+                <Link
                   className="text-gray-400 font-semibold hover:text-red-600 duration-300 ease-in-out"
+                  to="/contact"
                 >
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

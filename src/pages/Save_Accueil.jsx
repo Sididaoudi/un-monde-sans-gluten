@@ -10,10 +10,7 @@ import Posts from "../components/Posts";
 import NewsLetter from "../components/NewsLetter";
 import Footer from "../components/Footer";
 
-
-
 function Accueil(id, slug, img) {
- 
   return (
     <main>
       {/* Appel du composant Hero */}
@@ -105,41 +102,39 @@ function Accueil(id, slug, img) {
             <div className=" pr-4 pl-4 w-[50%]  ">
               {/*categories__item */}
               <div className="relative">
-                {/* <li key={id}>
+                <li>
+                  <h3 className="text-red-300">Test</h3>
                   <Link
-                    to={`/restaurant/${id}/${slug}`}
+                    to={`/restaurant/7/chambelland`}
                     className="object-cover h-[570px] w-full rounded-sm"
                   >
                     <img
                       src={`${import.meta.env.BASE_URL}feature-location/Boulangerie.jpg`}
-                      alt={name}
-                      className="w-full h-[570px] w-full rounded-sm"
+                      alt="Chambelland"
+                      className="h-[570px] w-full rounded-sm"
                     />
+                    <div className="absolute bottom-8 left-0 p-[0_30px] text-creme">
+                      <h6 className="mb-1 font-bold text-xl">Chambelland</h6>
+                      <p className="text-lg ">43 rue Brochant, 75017</p>
+                    </div>
                   </Link>
-                </li> */}
-                <Link
-                  to={`/boulangerie/7/chambelland`}
-                  className="object-cover h-[570px] w-full rounded-sm"
-                >
+                </li>
+                {/* <a href="">
                   <img
                     src={`${import.meta.env.BASE_URL}feature-location/Boulangerie.jpg`}
                     alt="Paris"
                     className="object-cover h-[570px] w-full rounded-sm"
                   />
-                  {/*class="feature__location__item__text" */}
                   <div className="absolute bottom-8 left-0 p-[0_30px] text-creme">
                     <h6 className="  mb-1 font-bold text-xl">Chambelland</h6>
                     <p className="text-lg ">43 rue Brochant, 75017</p>
                   </div>
-                </Link>
+                </a> */}
               </div>
             </div>
             <div className=" grid grid-cols-2 gap-8">
               <div className="relative block  ">
-                <Link
-                  to={`/restaurant/11/sol-semilla`}
-                  className="object-cover h-[570px] w-full rounded-sm"
-                >
+                <a href="">
                   <img
                     src={`${import.meta.env.BASE_URL}feature-location/Sol-Semilla.jpg`}
                     alt="Paris"
@@ -150,13 +145,10 @@ function Accueil(id, slug, img) {
                     <h6 className="  mb-1 font-bold text-xl">Sol Semilla</h6>
                     <p className="text-lg ">23 rue des Vinaigriers, 75010</p>
                   </div>
-                </Link>
+                </a>
               </div>
               <div className="relative block">
-                <Link
-                  to={`/restaurant/12/kapunka-cantine-thaï`}
-                  className="object-cover h-[570px] w-full rounded-sm"
-                >
+                <a href="">
                   <img
                     src={`${import.meta.env.BASE_URL}feature-location/Street-food.jpg`}
                     alt="Paris"
@@ -171,13 +163,10 @@ function Accueil(id, slug, img) {
                       51 rue Saint-Sauveur 75002
                     </p>
                   </div>
-                </Link>
+                </a>
               </div>
               <div className="relative grid col-span-2 ">
-                <Link
-                  to={`/restaurant/13/fantastico-da-antonio-e-marco-morreale`}
-                  className="object-cover w-full rounded-sm"
-                >
+                <a href="">
                   <img
                     src={`${import.meta.env.BASE_URL}feature-location/Pizzeria.jpg`}
                     alt="Paris"
@@ -192,7 +181,7 @@ function Accueil(id, slug, img) {
                       Rue centrale Joliot Curie 69007 Lyon
                     </p>
                   </div>
-                </Link>
+                </a>
               </div>
             </div>
           </div>
