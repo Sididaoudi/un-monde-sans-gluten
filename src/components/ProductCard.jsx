@@ -59,7 +59,6 @@ function ProductCard({
           className={`text-white ${Tags === "Meilleur tarif" ? "bg-[#00A7EA] font-medium p-[5px_15px_5px_10px] rounded-xs absolute top-5 left-5 inline-block text-xs" : "bg-[#f03250] font-medium p-[5px_15px_5px_10px] rounded-xs absolute top-5 left-5 inline-block text-xs"}`}
         >
           {Tags}
-          <h2 className="text-red-300">test</h2>
         </div>
 
         <div className="flex gap-2 absolute left-[30px] bottom-[-30px]">
